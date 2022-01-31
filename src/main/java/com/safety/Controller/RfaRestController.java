@@ -24,7 +24,7 @@ public class RfaRestController {
 	@Autowired
 	RfaService service;
 	
-	@PostMapping("/rfa")
+	@PostMapping("/addrfa")
 	public ResponseEntity<Rfa> createRfa(@Validated @RequestBody Rfa rfa){
 		
 		Rfa r = service.addRfa(rfa);
@@ -32,21 +32,21 @@ public class RfaRestController {
 		return new ResponseEntity<Rfa>(r,HttpStatus.OK);
 	}
 	
-	@PutMapping("/rfa/{rfaId}")
+	@PutMapping("/updaterfa/{rfaId}")
 	public ResponseEntity<Rfa> updateRfa(@PathVariable int rfaId,@RequestBody Rfa rfa){
 		
 		Rfa r = service.updateRfa(rfaId,rfa);
 		return new ResponseEntity<Rfa>(r,HttpStatus.OK);
 	}
 	
-	@GetMapping("/rfa")
+	@GetMapping("/fetchrfa")
 	public ResponseEntity<List<Rfa>> fetchRfa(){
 		
 		List<Rfa> r = service.findallRfa();
 		return ResponseEntity.ok().body(r);
 	}
 	
-	@GetMapping("/rfa/{rfaId}")
+	@GetMapping("/fetchrfa/{rfaId}")
 	public ResponseEntity<List<Rfa>> getRfaById(@PathVariable int rfaId){
 		Optional<Rfa> r = service.findByRfaId(rfaId);
 		if(r.isPresent()) {

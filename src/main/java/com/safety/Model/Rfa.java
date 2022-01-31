@@ -1,20 +1,13 @@
 package com.safety.Model;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="rfa")
@@ -33,11 +26,6 @@ public class Rfa {
 	@Column(name="action",nullable = false)
 	private String action;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "rfa_Id", referencedColumnName = "rfaId")
-	private Action actions;
-	
-	
 	public int getRfaId() {
 		return rfaId;
 	}
@@ -69,13 +57,31 @@ public class Rfa {
 	public void setAction(String action) {
 		this.action = action;
 	}
+	
+
+	public Rfa(int rfaId, int incidentId, @NotEmpty(message = "reason field should not be empty..") String reason,
+			@NotEmpty(message = "action field should not be empty..") String action) {
+		super();
+		this.rfaId = rfaId;
+		this.incidentId = incidentId;
+		this.reason = reason;
+		this.action = action;
+	}
+	
+
+	public Rfa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public String toString() {
 		return "Rfa [rfaId=" + rfaId + ", incidentId=" + incidentId + ", reason=" + reason + ", action=" + action + "]";
 	}
+
 	
+ 	
 
 	
 	
-}
+ }

@@ -5,15 +5,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.safety.DAO.RfaDAO;
+
+import com.safety.Repository.RfaRepository;
 import com.safety.Model.Rfa;
 
 @Service
 public class RfaServiceimpl implements RfaService{
 
 	@Autowired
-	RfaDAO dao;
-	
+	RfaRepository dao;
 	
 	@Override
 	public Rfa addRfa(Rfa rfa) {

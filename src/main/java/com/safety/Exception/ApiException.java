@@ -1,10 +1,12 @@
 package com.safety.Exception;
 
-public class ApiException extends RuntimeException {
 
+public class ApiException extends RuntimeException {
 	private static final long serialVersionUID =1L;
-	public ApiException(String str) {
-		
-		super(str);
+	public  ApiException(String message){
+	
+		super(message);
 	}
+
+
 }
